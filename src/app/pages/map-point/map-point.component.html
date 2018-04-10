@@ -1,0 +1,24 @@
+
+
+<div style="width: 1024px; margin: 0 auto;">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="latitud" [(ngModel)]="point.lat">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="longitud" [(ngModel)]="point.lng">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Tipo Mapa" [(ngModel)]="map.tipo">
+            <mat-option *ngFor="let tipo of tiposMapa" [value]="tipo.value">
+                {{ tipo.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<agm-map [latitude]="map.lat" (mapClick)="changeMarker($event)" [longitude]="map.lng" [mapTypeId]="map.tipo">
+    <agm-marker *ngIf="point !== undefined" [latitude]="point.lat" [longitude]="point.lng"></agm-marker>
+</agm-map>
+
+
