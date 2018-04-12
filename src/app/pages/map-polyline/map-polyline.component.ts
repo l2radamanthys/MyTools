@@ -57,4 +57,9 @@ export class MapPolylineComponent implements OnInit, OnDestroy {
         const point = { lat: $event.coords.lat, lng: $event.coords.lng };
         this.polylines[i] = point;
     }
+
+
+    public removeLastMarker() {
+        this.polylines.pop();
+    }
 }

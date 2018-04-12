@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-    selector: 'map-point',
+    selector: 'app-map-point',
     templateUrl: './map-point.component.html',
     styleUrls: ['./map-point.scss']
 })
