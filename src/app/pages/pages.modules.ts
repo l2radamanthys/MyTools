@@ -1,3 +1,4 @@
+import { MapPolylineComponent } from './map-polyline/map-polyline.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ComponentsModule } from './../components/components.modulte';
@@ -22,6 +23,7 @@ import { PagesRoutesModule } from './pages.routing';
     declarations: [
         HomeComponent,
         MapPointComponent,
+        MapPolylineComponent
     ]
 })
 export class PagesModule {}

@@ -1,0 +1,31 @@
+<div style="width: 1024px; margin: 0 auto;">
+    <mat-form-field>
+        <mat-select placeholder="Tipo Mapa" [(ngModel)]="map.tipo">
+            <mat-option *ngFor="let tipo of tiposMapa" [value]="tipo.value">
+                {{ tipo.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<agm-map [latitude]="map.lat" (mapClick)="addMarker($event)" [longitude]="map.lng" [mapTypeId]="map.tipo">
+
+        <ng-container *ngIf="!!polylines">
+            <agm-polyline strokeColor="#670000">
+                <agm-polyline-point
+                        *ngFor="let point of polylines"
+                        [latitude]="point.lat"
+                        [longitude]="point.lng">
+                </agm-polyline-point>
+            </agm-polyline>
+        </ng-container>
+
+        <ng-container *ngIf="showMarkers">
+            <agm-marker 
+                    *ngFor="let point of polylines; let i=index"
+                    (dragEnd)="onMarkerDragEnd($event, i)"
+                    [markerDraggable]="true"
+                    [latitude]="point.lat"
+                    [longitude]="point.lng">
+            </agm-marker>
+        </ng-container>
+</agm-map>
