@@ -3,7 +3,8 @@ import {
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
     } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -16,6 +17,7 @@ import { NgModule } from '@angular/core';
         MatCheckboxModule,
         MatInputModule,
         MatSelectModule,
+        MatDialogModule,
     ],
     exports: [
         BrowserAnimationsModule,
@@ -23,6 +25,7 @@ import { NgModule } from '@angular/core';
         MatCheckboxModule,
         MatInputModule,
         MatSelectModule,
+        MatDialogModule,
     ]
 })
 export class MyMaterialAutoimportModule {}

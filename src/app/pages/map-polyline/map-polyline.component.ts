@@ -1,4 +1,8 @@
+import { SaveAsModalContComponent } from './../../components/save-as-modal-cont/save-as-modal-cont.component';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import {saveAs } from "file-saver";
+import { MatDialog } from '@angular/material';
+
 
 
 @Component({
@@ -12,7 +16,7 @@ export class MapPolylineComponent implements OnInit, OnDestroy {
     public tiposMapa: any[];
     showMarkers: boolean;
 
-    constructor() {
+    constructor(private dialog: MatDialog) {
         this.map = {
             lat: -24.795630,
             lng: -65.424598,
@@ -61,5 +65,27 @@ export class MapPolylineComponent implements OnInit, OnDestroy {
 
     public removeLastMarker() {
         this.polylines.pop();
+    }
+
+
+    public openModalImportarRuta() {
+    
+    }
+
+    public openModalExportarRuta() {
+        let dialogRef = this.dialog.open(SaveAsModalContComponent, {});
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result.trim().length > 0) {
+                let blob = new Blob([JSON.stringify(this.polylines, null, '    ')], {type: "text/plain;charset=utf-8"});
+                saveAs(blob, result);
+            }
+        });
+    }
+
+
+    public exportarRuta() {
+       
     }
 }
